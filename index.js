@@ -12,14 +12,36 @@ function getData() {
 function AstronautBios(astronaut) {
 
   return (
-    <div>
-
+    <div className = "astronaut">
+      <div className = "bio"> 
+      <div>
+      <h3>{astronaut.firstName} {astronaut.lastName}</h3>
+      </div>
+      <div>
+        <ul>
+            <li>{astronaut.hoursInSpace}</li>
+         <li>{astronaut.active}</li>
+       <li>{astronaut.skills.join()}</li>
+     </ul>
+     </div>
+     </div>
+     <img className = "avatar" src = {astronaut.picture}></img>
     </div>
-  )
+  );
 }
 
 // Function should render all astronaut bios
 function renderBios(data) {
+  const root = document.getElementById('root');
+const container = <div className='container'>
+
+  {AstronautBios(data[0])}
+
+</div>
+
+ReactDOM.render( container, root );
+
+
   //The AstronautBios component should be repeated to display bios for all 
   //astronaunts in the returned data object.
   
