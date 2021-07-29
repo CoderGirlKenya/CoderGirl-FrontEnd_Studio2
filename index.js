@@ -16,12 +16,10 @@ function AstronautBios(astronaut) {
       <div className = "bio"> 
       <div>
       <h3>{astronaut.firstName} {astronaut.lastName}</h3>
-      </div>
-      <div>
         <ul>
-            <li>{astronaut.hoursInSpace}</li>
-         <li>{astronaut.active}</li>
-       <li>{astronaut.skills.join()}</li>
+            <li>Hours in space: {astronaut.hoursInSpace}</li>
+         <li>Active: {astronaut.active.toString()}</li>
+       <li>Skills: {astronaut.skills.join(", ")}</li>
      </ul>
      </div>
      </div>
@@ -32,11 +30,14 @@ function AstronautBios(astronaut) {
 
 // Function should render all astronaut bios
 function renderBios(data) {
+  const astronautbios = [];
+  for (let i =0; i < data.length; i++ ){
+    astronautbios.push(AstronautBios(data[i]))
+  }
   const root = document.getElementById('root');
 const container = <div className='container'>
 
-  {AstronautBios(data[0])}
-
+{astronautbios}
 </div>
 
 ReactDOM.render( container, root );
